@@ -1,1 +1,3 @@
-bin/blockchain
+_build
+deps/
+database/blockchain.json

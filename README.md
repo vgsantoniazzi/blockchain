@@ -1,45 +1,45 @@
-## Welcome to blockvhain-engine
+## Welcome to Hustle Coin
 
-This project is an open-source blockchain engine based on Golang.
+This project is an open-source blockchain engine based on Elixir. Exchange knowledge by virtual money.
 
 ## Getting Started
 
 Clone the project:
 
 ```
-git clone git@github.com:vgsantoniazzi/blockchain-engine.git
+git clone git@github.com:vgsantoniazzi/hustle-coin.git
 ```
 
 ## Usage
 
-##### Execute
+##### Install dependencies
 
 ```
-make app.server
+$ mix deps.get
 ```
 
-##### Compile
+##### Initialize engine
 
 ```
-make
+$ iex -S mix
 ```
 
-##### Run
+##### Initialize Blockchain
 
 ```
-bin/blockchain
+iex(1)> blockchain = Coin.initialize
+```
+
+##### Add Block to Blockchain
+
+```
+iex(1)> blockchain = Blockchain.add(blockchain, Block.generate(List.last(blockchain), 99))
 ```
 
 ##### Format code
 
 ```
-make format
-```
-
-##### Clean
-
-```
-make clean
+mix format
 ```
 
 ## Contributing
