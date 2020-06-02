@@ -1,13 +1,13 @@
 defmodule Blockchain do
   def load do
     case File.read("database/blockchain.json") do
-      {:ok, body} -> Poison.decode(body, as: [%Block{}])
-      {:error, reason } -> { :error, reason }
+      {:ok, body} -> Poison.decode(body, as: blockchain_structure())
+      {:error, reason} -> {:error, reason}
     end
   end
 
   def load_genesys! do
-    File.read!("database/genesys.json") |> Poison.decode!(as: [%Block{}])
+    File.read!("database/genesys.json") |> Poison.decode!(as: blockchain_structure())
   end
 
   def add(blockchain, block) do
@@ -15,7 +15,21 @@ defmodule Blockchain do
       blockchain = blockchain ++ [block]
       save!(blockchain)
     end
+
     blockchain
+  end
+
+  defp blockchain_structure() do
+    [
+      %Block{
+        transactions: [
+          %Transaction{
+            input: %Row{},
+            output: %Row{}
+          }
+        ]
+      }
+    ]
   end
 
   defp save!(blockchain) do

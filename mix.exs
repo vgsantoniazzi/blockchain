@@ -19,7 +19,8 @@ defmodule Coin.MixProject do
 
   defp deps do
     [
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:ex_cli, "~> 0.1.0"}
     ]
   end
 end

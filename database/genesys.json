@@ -6,6 +6,16 @@
     "nonce": 0,
     "previous_hash": null,
     "timestamp": "1590700683",
-    "value": 1000000
+    "transactions": [{
+      "id": "000797687C920621E58E8835BB35B7853B853B7509EB005955A24AC89CEE663E",
+      "output": {
+        "value": 5000,
+        "public_key": "coinbase"
+      },
+      "input": {
+        "value": 5000,
+        "public_key": "victor"
+      }
+    }]
   }
 ]
