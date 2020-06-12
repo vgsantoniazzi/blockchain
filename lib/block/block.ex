@@ -2,7 +2,7 @@ defmodule Block do
   @derive [Poison.Encoder]
   defstruct [:index, :timestamp, :transactions, :hash, :previous_hash, :difficulty, :nonce]
 
-  @difficulty 6
+  @difficulty 5
 
   def generate(previous_block, from, to, value) do
     new = %Block{

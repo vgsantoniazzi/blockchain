@@ -1,13 +1,13 @@
-## Welcome to Hustle Coin
+## Welcome to Blockchain
 
-This project is an open-source blockchain engine based on Elixir. Exchange knowledge by virtual money.
+This project is an open-source blockchain engine based on Elixir. Use this engine to build a digital coin or smart contracts.
 
 ## Getting Started
 
 Clone the project:
 
 ```
-git clone git@github.com:vgsantoniazzi/hustle-coin.git
+git clone git@github.com:vgsantoniazzi/blockchain.git
 ```
 
 ## Usage
@@ -16,6 +16,12 @@ git clone git@github.com:vgsantoniazzi/hustle-coin.git
 
 ```
 $ mix deps.get
+```
+
+## CLI
+
+```
+$ mix blockchain
 ```
 
 ##### Initialize engine
@@ -27,7 +33,7 @@ $ iex -S mix
 ##### Initialize Blockchain
 
 ```
-iex(1)> blockchain = Coin.initialize
+iex(1)> blockchain = Engine.initialize
 ```
 
 ##### Add Block to Blockchain

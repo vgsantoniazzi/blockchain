@@ -1,4 +1,4 @@
-defmodule Coin do
+defmodule Engine do
   def initialize do
     case Blockchain.load() do
       {:ok, blockchain} -> blockchain

@@ -1,8 +1,8 @@
-defmodule CoinTest do
+defmodule EngineTest do
   use ExUnit.Case
-  doctest Coin
+  doctest Engine
 
   test "greets the world" do
-    assert Coin.hello() == :world
+    assert Engine.hello() == :world
   end
 end

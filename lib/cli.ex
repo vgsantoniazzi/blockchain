@@ -1,8 +1,8 @@
 defmodule CLI do
-  use ExCLI.DSL, mix_task: :hustle
+  use ExCLI.DSL, mix_task: :blockchain
 
-  name("hustle")
-  description("Hustle Blockchain CLI")
+  name("blockchain")
+  description("Blockchain CLI")
 
   long_description(~s"""
     Command line interface
@@ -14,7 +14,7 @@ defmodule CLI do
     description("Lists the blockchain")
 
     run _context do
-      for block <- Coin.initialize() do
+      for block <- Engine.initialize() do
         IO.inspect(block)
       end
     end
@@ -31,7 +31,7 @@ defmodule CLI do
         IO.puts("Mining..")
       end
 
-      blockchain = Coin.initialize()
+      blockchain = Engine.initialize()
       block = Block.generate(List.last(blockchain), context[:from], context[:to], context[:value])
       Blockchain.add(blockchain, block)
       IO.puts("")
@@ -44,7 +44,7 @@ defmodule CLI do
     option(:block, help: "Blockchain hash", required: true)
 
     run context do
-      blockchain = Coin.initialize()
+      blockchain = Engine.initialize()
       block = Enum.find(blockchain, fn x -> x.hash == context[:block] end)
 
       if block do
