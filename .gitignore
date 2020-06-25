@@ -1,3 +1,4 @@
 _build
 deps/
 database/blockchain.json
+database/wallets.json

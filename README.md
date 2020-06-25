@@ -22,6 +22,28 @@ $ mix deps.get
 
 ```
 $ mix blockchain
+
+Commands
+   balance         Get balance
+   check_address   Check if address is valid
+   check_block     Check if block is valid
+   add_wallet      Add new wallet to local database
+   add_block       Add new block to blockchain
+   wallets         List addresses
+   blocks          Lists the blockchain
+
+```
+
+## CLI Examples
+
+```
+$ mix blockchain balance --address 3czs3SwkAnisqC3cUBi5XgytkA2NscG33AJ7YKhaz9scd2XY9pUqQktrXcZQ5aFa6VPCFT
+$ mix blockchain check_address --address 3czzKxPGECGxsfwG1zVUBvUxxe7c7AbPoburpmFdJxQdDyeT8Ng8KSCLmk2ewmQnKVPVAy
+$ mix blockchain check_block --block 0000C12AC4308926C493DBC3C93A4EBB724D6B2B480358E56E72ED394149F8CD
+$ mix blockchain add_wallet
+$ mix blockchain add_block --from "3czs3SwkAnisqC3cUBi5XgytkA2NscG33AJ7YKhaz9scd2XY9pUqQktrXcZQ5aFa6VPCFT" --to "3czzX9L9P8Sg1MhuZER1hekBde4bmyNwkER5FARYmVLb99Kn5efEXE65zJ5GDQ3zqZn2SX" --value 455
+$ mix blockchain wallets
+$ mix blockchain blocks
 ```
 
 ##### Initialize engine

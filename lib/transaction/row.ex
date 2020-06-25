@@ -1,4 +1,4 @@
 defmodule Row do
   @derive [Poison.Encoder]
-  defstruct [:value, :public_key]
+  defstruct [:value, :address]
 end

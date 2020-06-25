@@ -13,18 +13,26 @@ defmodule Block do
           id:
             :crypto.hash(:sha256, DateTime.utc_now() |> DateTime.to_unix() |> Integer.to_string())
             |> Base.encode16(),
-          output: %Row{public_key: from, value: value},
-          input: %Row{public_key: to, value: value}
+          output: %Row{address: from, value: value},
+          input: %Row{address: to, value: value}
         }
       ],
       previous_hash: previous_block.hash,
       difficulty: @difficulty
     }
 
-    if Transaction.can_withdraw?(from, value) do
-      Map.merge(new, generate_hash(new))
-    else
-      raise ArgumentError, message: "Public key (#{from}): Cannot withdraw value"
+    cond do
+      !Wallet.valid_address?(from) ->
+        raise ArgumentError, message: "Address (#{from}): Invalid!"
+
+      !Wallet.valid_address?(to) ->
+        raise ArgumentError, message: "Address (#{from}): Invalid!"
+
+      !Transaction.can_withdraw?(from, value) ->
+        raise ArgumentError, message: "Address(#{from}): Do not have enough balance!"
+
+      true ->
+        Map.merge(new, generate_hash(new))
     end
   end
 

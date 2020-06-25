@@ -10,7 +10,7 @@ defmodule CLI do
 
   option(:verbose, count: true, aliases: [:v])
 
-  command :list do
+  command :blocks do
     description("Lists the blockchain")
 
     run _context do
@@ -20,7 +20,17 @@ defmodule CLI do
     end
   end
 
-  command :add do
+  command :wallets do
+    description("List addresses")
+
+    run _context do
+      for wallet <- Wallets.load() do
+        IO.inspect(wallet)
+      end
+    end
+  end
+
+  command :add_block do
     description("Add new block to blockchain")
     option(:value, help: "Value to add", required: true, type: :integer)
     option(:from, help: "Account to withdraw", required: true)
@@ -39,7 +49,16 @@ defmodule CLI do
     end
   end
 
-  command :check do
+  command :add_wallet do
+    description("Add new wallet to local database")
+
+    run _context do
+      wallet = Wallets.append(Wallet.generate())
+      IO.inspect(wallet)
+    end
+  end
+
+  command :check_block do
     description("Check if block is valid")
     option(:block, help: "Blockchain hash", required: true)
 
@@ -56,14 +75,24 @@ defmodule CLI do
     end
   end
 
+  command :check_address do
+    description("Check if address is valid")
+    option(:address, help: "Address hash", required: true)
+
+    run context do
+      result = Wallet.valid_address?(context[:address])
+      IO.puts("Valid: #{result}")
+    end
+  end
+
   command :balance do
     description("Get balance")
 
-    option(:public_key, help: "Public key hash", required: true)
+    option(:address, help: "Address hash", required: true)
 
     run context do
-      balance = Transaction.balance_for(context[:public_key])
-      IO.puts("Balance for #{context[:public_key]}: #{balance}")
+      balance = Transaction.balance_for(context[:address])
+      IO.puts("Balance for #{context[:address]}: #{balance}")
     end
   end
 end

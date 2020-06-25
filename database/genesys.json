@@ -9,12 +9,12 @@
     "transactions": [{
       "id": "000797687C920621E58E8835BB35B7853B853B7509EB005955A24AC89CEE663E",
       "output": {
-        "value": 5000,
-        "public_key": "coinbase"
+        "value": 21000,
+        "public_key": "3czzKxPGECGxsfwG1zVUBvUxxe7c7AbPoburpmFdJxQdDyeT8Ng8KSCLmk2ewmQnKVPVAy"
       },
       "input": {
-        "value": 5000,
-        "public_key": "victor"
+        "value": 21000,
+        "public_key": "3czs3SwkAnisqC3cUBi5XgytkA2NscG33AJ7YKhaz9scd2XY9pUqQktrXcZQ5aFa6VPCFT"
       }
     }]
   }
